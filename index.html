@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <main>
+        <h1>Weather Dashboard</h1>
+        <div class="dashboard">
+            <div class="menu">
+                <div class="input">
+                    <input type="text" name="city" placeholder="City" id="inputBar">
+                    <input type="button" id="inputBtn">
+                </div>
+                <ul class="recent">
+                    <li class="item1">Charlotte</li>
+                    <li class="item2">New York</li>
+                    <li class="item3">Los Angeles</li>
+                </ul>
+            </div> 
+            <div class="right">
+                <div class="today">
+                    <h2 class="cityTitle">Charlotte</h2>
+                    <div id="temp">0°</div>
+                </div>
+                <div class="future">
+                    <h2 class="futureTitle">5-Day Forecast</h2>
+                    <div class="days">
+                        <div class="day1">
+                            <h3 id="day1">day1</h3>
+                            <div id="d1Temp">0°</div>
+                        </div>
+                        <div class="day2">
+                            <h3 id="day2">day2</h3>
+                            <div id="d2Temp">0°</div>
+                        </div>
+                        <div class="day3">
+                            <h3 id="day3">day3</h3>
+                            <div id="d3Temp">0°</div>
+                        </div>
+                        <div class="day4">
+                            <h3 id="day4">day4</h3>
+                            <div id="d4Temp">0°</div>
+                        </div>
+                        <div class="day5">
+                            <h3 id="day5">day5</h3>
+                            <div id="d5Temp">0°</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div> 
+    </main>
+	<script src="script.js"></script>
+  </body>
+</html>

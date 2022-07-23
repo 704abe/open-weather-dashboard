@@ -1,0 +1,50 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 67vh;
+}
+
+.dashboard {
+    display: flex;
+    height: 90%;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.menu {
+border: 1px solid black;
+height: 100%;
+
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.today {
+    border: 1px solid black;
+    height: 50%;
+}
+    
+.future {
+    border: 1px solid black;
+    height: 50%;
+}
+
+h1 {
+    height: 10%;
+}
+
+h2 {
+display: inline;
+height: 10%;
+}
+
+.days {
+    display: flex;
+    height: 90%;
+}
