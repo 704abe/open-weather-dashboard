@@ -1,47 +1,139 @@
 
+.class {
+    color:#7bd5f5;
+    color: #787FF6;
+    color: #4ADEDE;
+    color:#1CA7EC;
+    color:#1F2F98;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 67vh;
+    width: 100%;
+    font-family: sans-serif;
+    background-color: azure;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    text-transform: capitalize;
+    background-color: azure;
 }
 
 .dashboard {
     display: flex;
     height: 90%;
-    /* justify-content: center; */
-    /* align-items: center; */
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* box-shadow: -1px 1px 10px gray; */
 }
 
 .menu {
-border: 1px solid black;
-height: 100%;
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 25%;
+    border-radius: 10px 0 0 10px;
+    background-color: rgba(65, 85, 90, 1);
+    border: 1px solid white;
+}
 
+.input {
+    display: flex;
+    /* justify-content: space-around; */
+    margin-left: 20px;
+    padding-top: 25px;
+}
+
+#inputBar {
+    width: 6rem;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    padding-left: 5px;
+    padding: 5px;
+}
+
+#inputBar:focus {
+    outline: none;
+}
+
+#inputBtn {
+    border-radius: 0 10px 10px 0;
+    border: none;
+    padding-right: 10px;
+    color: white;
+    background-color: gray;
+}
+
+#inputBtn:active {
+    /* background-color: lightgray; */
+    box-shadow: 1px 1px 5px black;
 }
 
 .right {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 50%;
 }
 
 .today {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 0 10px 0 0;
     height: 50%;
+    background-color: rgba(65, 85, 90, 1);
+    /* background-color: #787FF6; */
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.todayHeader {
+    display: flex;
+    height: 5%;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+#temp {
+    font-size: 3rem;
+    /* padding-top: .5rem; */
+}
+
+.description {
+    background-color: #7bd5f5;
+    color: black;
+    padding-top: 5px;
+    font-weight: bold;
+}
+
+#humid {
+    padding-top: 8px;
 }
     
 .future {
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 0 0 10px 0;
     height: 50%;
+    background-color: lightblue;
+    padding-top: 20px;
+    text-align: center;
 }
 
 h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 10%;
 }
 
 h2 {
-display: inline;
-height: 10%;
+    display: inline;
+    /* height: 10%; */
 }
 
 .days {

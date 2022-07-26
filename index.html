@@ -15,7 +15,7 @@
             <div class="menu">
                 <div class="input">
                     <input type="text" name="city" placeholder="City" id="inputBar">
-                    <input type="button" id="inputBtn">
+                    <button id="inputBtn">Go</button>
                 </div>
                 <ul class="recent">
                     <li class="item1">Charlotte</li>
@@ -25,9 +25,16 @@
             </div> 
             <div class="right">
                 <div class="today">
-                    <h2 id="cityTitle">Charlotte</h2>
-                    <div id="temp">0°</div>
-                    <img src="" alt="" id="icon">
+                    <div class="todayHeader">
+                        <h2 id="cityTitle">City</h2>
+                    </div>
+                    <div class="description">
+                        <div id="temp">0°</div>
+                        <div id="descr"></div>
+                        <img alt="" SameSite="secure" id="icon">
+                    </div>
+                    <div id="humid"></div>
+                    <div id="wind"></div>
                 </div>
                 <div class="future">
                     <h2 class="futureTitle">5-Day Forecast</h2>
