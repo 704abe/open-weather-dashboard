@@ -94,7 +94,19 @@ main {
 }
 
 .listItem:hover {
-    background-color: rgba(65, 85, 90, 1);
+    background-color: lightblue;
+    color: white;
+}
+
+#clear {
+    display: flex;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+#clear:hover {
+    text-decoration: underline;
 }
 
 .right {

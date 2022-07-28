@@ -1,6 +1,7 @@
 var inputBtn = $('#inputBtn');
 var inputBar = $('#inputBar');
 var recent = $('.recent');
+var clear = $('#clear');
 
 const weather = {
     apiKey: '2b42c7fdedf42c78051a0e7d3a57aab9',
@@ -87,17 +88,19 @@ const weather = {
         $('#icon3').attr("src", 'https://openweathermap.org/img/wn/' + icon3 + '.png');
         $('#icon4').attr("src", 'https://openweathermap.org/img/wn/' + icon4 + '.png');
         $('#icon5').attr("src", 'https://openweathermap.org/img/wn/' + icon5 + '.png');
-        // $('#humid').text('Humidity: ' + humidity + '%');
-        // $('#wind').text('Wind Speed: ' + speed + 'mph');
+
         const numItem = $('li').length;
-        if(numItem > 9){
-            inputBar.val('');
-            return;
-        } else {
         const listItem = $('<li>' + data.city.name + '</li>');
-        recent.append(listItem);
-        listItem.addClass('listItem');
-        inputBar.val('');
+        if(numItem < 9){
+            recent.prepend(listItem);
+            listItem.addClass('listItem');
+            inputBar.val('');
+        } else {
+            inputBar.val('');
+            $('.recent li:last-child').remove();
+            recent.prepend(listItem);
+            listItem.addClass('listItem');
+            return;
         }
     }
 }
@@ -118,7 +121,7 @@ function saveSearch(input) {
 inputBtn.on('click', function() {
     var inputVal = $('#inputBar').val();
     console.log(inputVal);
-    search(inputVal);  
+    search(inputVal);
 });
 
 inputBar.on('keypress', function(e) {
@@ -131,5 +134,22 @@ recent.on('click', function(e) {
     weather.fetchWeather(e.target.textContent);
     weather.fetchFuture(e.target.textContent);
 });
+
+clear.on('click', function(e) {
+    $('li').remove();
+});
+
+// function listItem(city) {
+//     const numItem = $('li').length;
+//     if(numItem > 9){
+//         inputBar.val('');
+//         return;
+//     } else {
+//     const listItem = $('<li>' + city + '</li>');
+//     recent.append(listItem);
+//     listItem.addClass('listItem');
+//     inputBar.val('');
+//     }
+// }
 
 // weather.fetchWeather('tokyo')
