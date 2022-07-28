@@ -144,13 +144,32 @@ main {
 }
 
 .description {
-    /* position: relative; */
+    display: flex;
+    justify-content: space-evenly;
     height: 50%;
     background-color: #7bd5f5;
     /* padding-top: 5px; */
     font-weight: bold;
     color: white;
     text-shadow: -1px 1px 1px black;
+}
+
+.descrLeft {
+    width: 33%;
+    text-align: left;
+}
+
+#day {
+    padding: 10px 0 0 10px;
+}
+
+.descrMid {
+    width: 33%;
+}
+
+.descrRight{
+    width: 33%;
+
 }
 
 .todayFooter {

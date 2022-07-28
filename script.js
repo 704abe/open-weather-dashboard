@@ -1,10 +1,12 @@
 $('.days').addClass('hidden');
 $('.futureTitle').addClass('hidden');
+$('#day').addClass('hidden');
 
 var inputBtn = $('#inputBtn');
 var inputBar = $('#inputBar');
 var recent = $('.recent');
 var clear = $('#clear');
+var day = $('#day');
 var day1 = $('#day1');
 var day2 = $('#day2');
 var day3 = $('#day3');
@@ -14,6 +16,7 @@ var day5 = $('#day5');
 var today = moment().day();
 dayOfWeek();
 function dayOfWeek() {
+    day.text(moment().day(today).format('dddd MMM Do'));
     day1.text(moment().day(today + 1).format('dddd'));
     day2.text(moment().day(today + 2).format('dddd'));
     day3.text(moment().day(today + 3).format('dddd'));
@@ -131,6 +134,7 @@ const weather = {
 function search(input) {
     $('.days').removeClass('hidden');
     $('.futureTitle').removeClass('hidden');
+    $('#day').removeClass('hidden');
     weather.fetchWeather(input);
     weather.fetchFuture(input);
 }
@@ -155,6 +159,9 @@ inputBar.on('keypress', function(e) {
 recent.on('click', function(e) {
     weather.fetchWeather(e.target.textContent);
     weather.fetchFuture(e.target.textContent);
+    $('.days').removeClass('hidden');
+    $('.futureTitle').removeClass('hidden');
+    $('#day').removeClass('hidden');
 });
 
 clear.on('click', function(e) {
