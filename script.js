@@ -20,9 +20,6 @@ function dayOfWeek() {
     day4.text(moment().day(today + 4).format('dddd'));
     day5.text(moment().day(today + 5).format('dddd'));
 }
-// tomorrow.text(today + 1);
-// moment().day().format('dddd');
-// tomorrow.text();
 
 for (var i = 0; i < localStorage.length; i++){
     const stored = JSON.parse(localStorage.getItem(localStorage.key(i)));
