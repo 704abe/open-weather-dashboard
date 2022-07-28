@@ -3,10 +3,15 @@ var inputBar = $('#inputBar');
 var recent = $('.recent');
 var clear = $('#clear');
 
+for (var i = 0; i < localStorage.length; i++){
+    const stored = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    recent.append(stored);
+    $('li').addClass('listItem');
+}
+
 const weather = {
     apiKey: '2b42c7fdedf42c78051a0e7d3a57aab9',
     fetchWeather: function(city) {
-        console.log(typeof city, city); 
         fetch('https://api.openweathermap.org/data/2.5/weather?q='
         + city
         + '&cnt=5&units=imperial&appid='
@@ -28,8 +33,6 @@ const weather = {
         const temp = Math.floor(data.main.temp);
         const humidity = data.main.humidity;
         const speed = data.wind.speed
-        console.log(name,icon,description,temp,speed);
-        console.log(typeof icon, icon);
         $('#cityTitle').text(name);
         $('#temp').text(temp + '°');
         $('#descr').text(description);
@@ -39,7 +42,6 @@ const weather = {
         
     },
     fetchFuture: function(city) {
-        console.log(typeof city, city);
         fetch('https://api.openweathermap.org/data/2.5/forecast?q='
         + city
         + '&units=imperial&cnt=6&appid='
@@ -67,10 +69,6 @@ const weather = {
         const icon4 = data.list[3].weather[0].icon;
         const icon5 = data.list[4].weather[0].icon;
 
-        // const humidity = data.main.humidity;
-        // const speed = data.wind.speed;
-        // console.log(name,icon,description,temp,speed);
-        // console.log(typeof icon, icon);
         $('#temp1').text(temp1 + '°');
         $('#temp2').text(temp2 + '°');
         $('#temp3').text(temp3 + '°');
@@ -89,18 +87,25 @@ const weather = {
         $('#icon4').attr("src", 'https://openweathermap.org/img/wn/' + icon4 + '.png');
         $('#icon5').attr("src", 'https://openweathermap.org/img/wn/' + icon5 + '.png');
 
-        const numItem = $('li').length;
-        const listItem = $('<li>' + data.city.name + '</li>');
-        if(numItem < 9){
-            recent.prepend(listItem);
-            listItem.addClass('listItem');
+        if(localStorage.getItem(data.city.name) != null){
             inputBar.val('');
-        } else {
-            inputBar.val('');
-            $('.recent li:last-child').remove();
-            recent.prepend(listItem);
-            listItem.addClass('listItem');
             return;
+        } else {
+            const numItem = $('li').length;
+            const listItem = $('<li>' + data.city.name + '</li>');
+            if(numItem < 9){
+                localStorage.setItem(data.city.name, JSON.stringify('<li>' + data.city.name + '</li>'));
+                recent.prepend(listItem);
+                listItem.addClass('listItem');
+                inputBar.val('');
+            } else {
+                localStorage.setItem(data.city.name, JSON.stringify('<li>' + data.city.name + '</li>'));
+                inputBar.val('');
+                $('.recent li:last-child').remove();
+                recent.prepend(listItem);
+                listItem.addClass('listItem');
+                return;
+            }
         }
     }
 }
@@ -137,19 +142,5 @@ recent.on('click', function(e) {
 
 clear.on('click', function(e) {
     $('li').remove();
+    localStorage.clear();
 });
-
-// function listItem(city) {
-//     const numItem = $('li').length;
-//     if(numItem > 9){
-//         inputBar.val('');
-//         return;
-//     } else {
-//     const listItem = $('<li>' + city + '</li>');
-//     recent.append(listItem);
-//     listItem.addClass('listItem');
-//     inputBar.val('');
-//     }
-// }
-
-// weather.fetchWeather('tokyo')
