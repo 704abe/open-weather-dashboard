@@ -1,7 +1,28 @@
+$('.days').addClass('hidden');
+$('.futureTitle').addClass('hidden');
+
 var inputBtn = $('#inputBtn');
 var inputBar = $('#inputBar');
 var recent = $('.recent');
 var clear = $('#clear');
+var day1 = $('#day1');
+var day2 = $('#day2');
+var day3 = $('#day3');
+var day4 = $('#day4');
+var day5 = $('#day5');
+
+var today = moment().day();
+dayOfWeek();
+function dayOfWeek() {
+    day1.text(moment().day(today + 1).format('dddd'));
+    day2.text(moment().day(today + 2).format('dddd'));
+    day3.text(moment().day(today + 3).format('dddd'));
+    day4.text(moment().day(today + 4).format('dddd'));
+    day5.text(moment().day(today + 5).format('dddd'));
+}
+// tomorrow.text(today + 1);
+// moment().day().format('dddd');
+// tomorrow.text();
 
 for (var i = 0; i < localStorage.length; i++){
     const stored = JSON.parse(localStorage.getItem(localStorage.key(i)));
@@ -111,7 +132,8 @@ const weather = {
 }
 
 function search(input) {
-    console.log('hallo');
+    $('.days').removeClass('hidden');
+    $('.futureTitle').removeClass('hidden');
     weather.fetchWeather(input);
     weather.fetchFuture(input);
 }
@@ -124,9 +146,7 @@ function saveSearch(input) {
 }
 
 inputBtn.on('click', function() {
-    var inputVal = $('#inputBar').val();
-    console.log(inputVal);
-    search(inputVal);
+    search($('#inputBar').val());
 });
 
 inputBar.on('keypress', function(e) {

@@ -193,3 +193,7 @@ h2 {
     height: 90%;
     justify-content: space-around;
 }
+
+.hidden {
+    display: none;
+}

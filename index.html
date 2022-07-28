@@ -7,6 +7,7 @@
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
   </head>
   <body>
     <main>
@@ -14,7 +15,7 @@
         <div class="dashboard">
             <div class="menu">
                 <div class="input">
-                    <input type="text" name="city" placeholder="City" id="inputBar">
+                    <input type="text" name="city" placeholder="Search for a city..." id="inputBar">
                     <button id="inputBtn">Go</button>
                 </div>
                 <ul class="recent"></ul>
@@ -23,10 +24,10 @@
             <div class="right">
                 <div class="today">
                     <div class="todayHeader">
-                        <h2 id="cityTitle">City</h2>
+                        <h2 id="cityTitle"></h2>
                     </div>
                     <div class="description">
-                        <div id="temp">0°</div>
+                        <div id="temp"></div>
                         <div id="descr"></div>
                         <img alt="" SameSite="secure" id="icon">
                     </div>
