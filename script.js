@@ -12,6 +12,7 @@ var day2 = $('#day2');
 var day3 = $('#day3');
 var day4 = $('#day4');
 var day5 = $('#day5');
+var array = [];
 
 var today = moment().day();
 dayOfWeek();
@@ -24,11 +25,13 @@ function dayOfWeek() {
     day5.text(moment().day(today + 5).format('dddd'));
 }
 
-for (var i = 0; i < localStorage.length; i++){
-    const stored = JSON.parse(localStorage.getItem(localStorage.key(i)));
-    recent.append(stored);
+// for (var i = 0; i < localStorage.length; i++) {
+    const cities = JSON.parse(localStorage.getItem['cities']);
+    console.log(cities);
+    $('li').remove();
+    recent.append(cities);
     $('li').addClass('listItem');
-}
+// }
 
 const weather = {
     apiKey: '2b42c7fdedf42c78051a0e7d3a57aab9',
@@ -108,26 +111,39 @@ const weather = {
         $('#icon4').attr("src", 'https://openweathermap.org/img/wn/' + icon4 + '.png');
         $('#icon5').attr("src", 'https://openweathermap.org/img/wn/' + icon5 + '.png');
 
-        if(localStorage.getItem(data.city.name) != null){
-            inputBar.val('');
-            return;
+        inputBar.val('');
+
+        const name = data.city.name;
+
+        if (!array.includes(name)) {
+            array.push(name);
         } else {
-            const numItem = $('li').length;
-            const listItem = $('<li>' + data.city.name + '</li>');
-            if(numItem < 9){
-                localStorage.setItem(data.city.name, JSON.stringify('<li>' + data.city.name + '</li>'));
-                recent.prepend(listItem);
-                listItem.addClass('listItem');
-                inputBar.val('');
-            } else {
-                localStorage.setItem(data.city.name, JSON.stringify('<li>' + data.city.name + '</li>'));
-                inputBar.val('');
-                $('.recent li:last-child').remove();
-                recent.prepend(listItem);
-                listItem.addClass('listItem');
-                return;
-            }
+            return;
         }
+
+        const arrayString = JSON.stringify(array);
+        console.log(typeof arrayString, arrayString);
+        localStorage.setItem('cities', arrayString);
+        // if(localStorage.getItem(data.city.name) != null){
+        //     inputBar.val('');
+        //     return;
+        // } else {
+        //     const numItem = $('li').length;
+        //     const listItem = $('<li>' + data.city.name + '</li>');
+        //     if(numItem < 9){
+        //         localStorage.setItem(numItem, JSON.stringify('<li>' + data.city.name + '</li>'));
+        //         recent.prepend(listItem);
+        //         listItem.addClass('listItem');
+        //         inputBar.val('');
+        //     } else {
+        //         localStorage.setItem(numItem, JSON.stringify('<li>' + data.city.name + '</li>'));
+        //         inputBar.val('');
+        //         $('.recent li:last-child').remove();
+        //         recent.prepend(listItem);
+        //         listItem.addClass('listItem');
+        //         return;
+        //     }
+        // }
     }
 }
 
