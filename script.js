@@ -12,7 +12,7 @@ var day2 = $('#day2');
 var day3 = $('#day3');
 var day4 = $('#day4');
 var day5 = $('#day5');
-var array = [];
+var array = []; 
 
 var today = moment().day();
 dayOfWeek();
@@ -25,14 +25,16 @@ function dayOfWeek() {
     day5.text(moment().day(today + 5).format('dddd'));
 }
 
-// for (var i = 0; i < localStorage.length; i++) {
-    const cities = JSON.parse(localStorage.getItem['cities']);
-    console.log(cities);
-    $('li').remove();
-    recent.append(cities);
-    $('li').addClass('listItem');
-// }
-
+const cities = localStorage.getItem('cities');
+console.log(typeof cities, cities);
+if(cities != null) {
+    const citiesArray = JSON.parse(cities);
+    console.log(typeof citiesArray, citiesArray);
+    for(i = 0; i < citiesArray.length; i++) {
+        recent.append('<li>' + citiesArray[i]);
+        $('li').addClass('listItem');
+    }
+}
 const weather = {
     apiKey: '2b42c7fdedf42c78051a0e7d3a57aab9',
     fetchWeather: function(city) {
@@ -48,11 +50,11 @@ const weather = {
         const name = data.name;
 
         if(!name){  
-            console.log('clear');
             $('#inputBar').val(''); 
+            console.log('clear');
         }
 
-        const icon = data.weather[0].icon;
+        var icon = data.weather[0].icon;
         const description = data.weather[0].description;
         const temp = Math.floor(data.main.temp);
         const humidity = data.main.humidity;
@@ -111,39 +113,51 @@ const weather = {
         $('#icon4').attr("src", 'https://openweathermap.org/img/wn/' + icon4 + '.png');
         $('#icon5').attr("src", 'https://openweathermap.org/img/wn/' + icon5 + '.png');
 
-        inputBar.val('');
+        // inputBar.val('');
 
-        const name = data.city.name;
+        // const name = data.city.name;
+
+        // if (!array.includes(name)) {
+        //     array.push(name);
+        // } else {
+        //     return;
+        // }
+
+        // $('li').remove();
+
+        // for(i = 0; i < array.length; i++) {
+        //     recent.append('<li>' + array[i]);
+        //     $('li').addClass('listItem');
+        //     console.log('go');
+        // }
+
+        // const arrayString = JSON.stringify(array);
+        // console.log(typeof arrayString, arrayString);
+        // localStorage.setItem('cities', arrayString);
+    },
+    render: function(name){
+
+        inputBar.val('');
 
         if (!array.includes(name)) {
             array.push(name);
+        } else if (1 == 1) {
+            console.log(this.displayWeather);
         } else {
             return;
+        }
+
+        $('li').remove();
+
+        for(i = 0; i < array.length; i++) {
+            recent.append('<li>' + array[i]);
+            $('li').addClass('listItem');
+            console.log('go');
         }
 
         const arrayString = JSON.stringify(array);
         console.log(typeof arrayString, arrayString);
         localStorage.setItem('cities', arrayString);
-        // if(localStorage.getItem(data.city.name) != null){
-        //     inputBar.val('');
-        //     return;
-        // } else {
-        //     const numItem = $('li').length;
-        //     const listItem = $('<li>' + data.city.name + '</li>');
-        //     if(numItem < 9){
-        //         localStorage.setItem(numItem, JSON.stringify('<li>' + data.city.name + '</li>'));
-        //         recent.prepend(listItem);
-        //         listItem.addClass('listItem');
-        //         inputBar.val('');
-        //     } else {
-        //         localStorage.setItem(numItem, JSON.stringify('<li>' + data.city.name + '</li>'));
-        //         inputBar.val('');
-        //         $('.recent li:last-child').remove();
-        //         recent.prepend(listItem);
-        //         listItem.addClass('listItem');
-        //         return;
-        //     }
-        // }
     }
 }
 
@@ -153,6 +167,7 @@ function search(input) {
     $('#day').removeClass('hidden');
     weather.fetchWeather(input);
     weather.fetchFuture(input);
+    weather.render(input);
 }
 
 function saveSearch(input) {
