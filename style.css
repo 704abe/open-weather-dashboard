@@ -30,11 +30,9 @@ main {
     width: 100%;
     justify-content: center;
     align-items: center;
-    /* box-shadow: -1px 1px 10px gray; */
 }
 
 .menu {
-    /* border: 1px solid black; */
     height: 100%;
     width: 25%;
     border-radius: 10px 0 0 10px;
@@ -44,7 +42,6 @@ main {
 
 .input {
     display: flex;
-    /* justify-content: space-around; */
     margin-left: 20px;
     padding-top: 25px;
 }
@@ -70,16 +67,11 @@ main {
 }
 
 #inputBtn:active {
-    /* background-color: lightgray; */
     box-shadow: 1px 1px 5px black;
 }
 
 .recent {
     list-style-type: none;
-    /* background-color: white;
-    font-size: 1.5rem;
-    margin-left: 20px;
-    border-radius: 15px 0 0 15px; */
 }
 
 .listItem {
@@ -119,20 +111,16 @@ main {
 }
 
 .today {
-    /* border: 1px solid black; */
     border-radius: 0 10px 0 0;
     height: 50%;
     background-color: rgba(65, 85, 90, 1);
     color: white;
     text-align: center;
-    /* padding-top: 20px; */
 }
 
 .todayHeader {
-    /* position: relative; */
     height: 15%;
     display: flex;
-    /* height: 5%; */
     justify-content: center;
     align-items: center;
     padding: 10px 0 10px 0;
@@ -140,7 +128,6 @@ main {
 
 #temp {
     font-size: 3rem;
-    /* padding-top: .5rem; */
 }
 
 .description {
@@ -148,7 +135,6 @@ main {
     justify-content: space-evenly;
     height: 50%;
     background-color: #7bd5f5;
-    /* padding-top: 5px; */
     font-weight: bold;
     color: white;
     text-shadow: -1px 1px 1px black;
@@ -173,9 +159,7 @@ main {
 }
 
 .todayFooter {
-    /* position: relative; */
     height: 35%;
-    /* bottom: -10px; */
 }
 
 #humid {
@@ -183,7 +167,6 @@ main {
 }
     
 .future {
-    /* border: 1px solid black; */
     border-radius: 0 0 10px 0;
     height: 50%;
     background-color: lightblue;
@@ -204,7 +187,6 @@ h1 {
 
 h2 {
     display: inline;
-    /* height: 10%; */
 }
 
 .days {

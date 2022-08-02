@@ -43,8 +43,16 @@ const weather = {
         + '&cnt=5&units=imperial&appid='
         + this.apiKey
         )
+        // .then(()=>{
+        //     console.log(typeof response);
+        //     if(typeof repsonse == 'undefined'){
+        //         console.log('gotcha');
+        //         return 1;
+        //     }
+        // })
         .then((response) => response.json())
-        .then((data) => this.displayWeather(data));
+        .then((data) => this.displayWeather(data))
+        return 0;
     },
     displayWeather: function(data) {
         const name = data.name;
@@ -74,7 +82,7 @@ const weather = {
         + this.apiKey
         )
         .then((response) => response.json())
-        .then((data) => this.displayFuture(data));
+        .then((data) => this.displayFuture(data))
     },
     displayFuture: function(data) {
         const temp1 = Math.floor(data.list[0].main.temp);
@@ -113,29 +121,10 @@ const weather = {
         $('#icon4').attr("src", 'https://openweathermap.org/img/wn/' + icon4 + '.png');
         $('#icon5').attr("src", 'https://openweathermap.org/img/wn/' + icon5 + '.png');
 
-        // inputBar.val('');
-
-        // const name = data.city.name;
-
-        // if (!array.includes(name)) {
-        //     array.push(name);
-        // } else {
-        //     return;
-        // }
-
-        // $('li').remove();
-
-        // for(i = 0; i < array.length; i++) {
-        //     recent.append('<li>' + array[i]);
-        //     $('li').addClass('listItem');
-        //     console.log('go');
-        // }
-
-        // const arrayString = JSON.stringify(array);
-        // console.log(typeof arrayString, arrayString);
-        // localStorage.setItem('cities', arrayString);
     },
-    render: function(name){
+    render: function(name) {
+
+        console.log('thru');
 
         inputBar.val('');
 
@@ -165,7 +154,12 @@ function search(input) {
     $('.days').removeClass('hidden');
     $('.futureTitle').removeClass('hidden');
     $('#day').removeClass('hidden');
-    weather.fetchWeather(input);
+    const noResponse = weather.fetchWeather(input);
+    console.log(noResponse);
+    if(typeof noResponse == 'undefined'){
+        inputBar.val('');
+        return;
+    }
     weather.fetchFuture(input);
     weather.render(input);
 }
