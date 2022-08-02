@@ -43,13 +43,6 @@ const weather = {
         + '&cnt=5&units=imperial&appid='
         + this.apiKey
         )
-        // .then(()=>{
-        //     console.log(typeof response);
-        //     if(typeof repsonse == 'undefined'){
-        //         console.log('gotcha');
-        //         return 1;
-        //     }
-        // })
         .then((response) => response.json())
         .then((data) => this.displayWeather(data))
         return 0;
