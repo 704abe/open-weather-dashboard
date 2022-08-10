@@ -16,6 +16,7 @@ var array = [];
 var formEl = $('#form');
 var invalid = 0;
 
+// renders updated weekdays to the dashboard
 var today = moment().day();
 dayOfWeek();
 function dayOfWeek() {
@@ -27,6 +28,7 @@ function dayOfWeek() {
     day5.text(moment().day(today + 5).format('dddd'));
 }
 
+// gets list of cities from local storage and appends it to the dashboard
 const cities = localStorage.getItem('cities');
 console.log(typeof cities, cities);
 if(cities != null) {
@@ -38,6 +40,7 @@ if(cities != null) {
     }
 }
 
+// fetches and displays current weather conditions
 const weather = {
     apiKey: '2b42c7fdedf42c78051a0e7d3a57aab9',
     fetchWeather: function(city) {
@@ -74,6 +77,7 @@ const weather = {
             return 0;
         })
     },
+    // fetches and displays future weather conditions
     fetchFuture: function(city) {
         console.log('future');
         fetch('https://api.openweathermap.org/data/2.5/forecast?q='
@@ -122,6 +126,7 @@ const weather = {
             weather.render(city);
         })
     },
+    // adds search input to the list of previous searches, appends that list to the dashboard, then saves that list to local storage
     render: function(name) {
 
         $('li').remove();
@@ -152,6 +157,7 @@ const weather = {
     }
 }
 
+// takes search input and routes it to fetchWeather and fetchFuture functions
 function search(input) {
     $('.days').removeClass('hidden');
     $('.futureTitle').removeClass('hidden');
@@ -172,12 +178,14 @@ function search(input) {
     weather.fetchFuture(input);
 }
 
+// event listener for search form submit 
 formEl.on('submit', function(event) {
     event.preventDefault();
     console.log(event);
     search($('#inputBar').val());
 });
 
+// event listener for list of saved city searches 
 recent.on('click', function(e) {
     search(e.target.textContent);
     $('.days').removeClass('hidden');
@@ -185,6 +193,7 @@ recent.on('click', function(e) {
     $('#day').removeClass('hidden');
 });
 
+// event listener for 'clear searches' button 
 clear.on('click', function(e) {
     $('#inputBar').val('');
     $('li').remove();
